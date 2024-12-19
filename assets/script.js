@@ -1,3 +1,4 @@
+// Hard code of questions
 let questions = [
   {
     prompt: `Inside which HTML 
@@ -87,13 +88,13 @@ function getQuestion() {
     choiceBtn.setAttribute("value", choice);
     choiceBtn.textContent = i + 1 + ". " + choice;
     choiceBtn.onclick = questionClick;
+    // TODO:
     choicesEl.appendChild(choiceBtn);
   });
 }
 
 // Check for right answers and deduct
 // Time for wrong answer, go to next question
-
 function questionClick() {
   if (this.value !== questions[currentQuestionIndex].answer) {
     time -= 10;
@@ -108,7 +109,9 @@ function questionClick() {
     feedbackEl.textContent = "Correct!";
     feedbackEl.style.color = "green";
   }
+  // reset
   feedbackEl.setAttribute("class", "feedback");
+  // re-reset
   setTimeout(function () {
     feedbackEl.setAttribute("class", "feedback hide");
   }, 2000);
@@ -122,7 +125,6 @@ function questionClick() {
 
 // End quiz by hiding questions,
 // Stop timer and show final score
-
 function quizEnd() {
   clearInterval(timerId);
   let endScreenEl = document.getElementById("quiz-end");
@@ -143,11 +145,12 @@ function clockTick() {
 
 // Save score in local storage
 // Along with users' name
-
 function saveHighscore() {
+  // NOTE: .value; trim()
   let name = nameEl.value.trim();
   if (name !== "") {
     let highscores =
+      // TODO: `window`
       JSON.parse(window.localStorage.getItem("highscores")) || [];
     let newScore = {
       score: time,
@@ -159,8 +162,8 @@ function saveHighscore() {
   }
 }
 
+// NEXT:
 // Save users' score after pressing enter
-
 function checkForEnter(event) {
   if (event.key === "Enter") {
     saveHighscore();
