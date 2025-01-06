@@ -76,8 +76,7 @@ function quizStart() {
   getQuestion();
 }
 
-// Loop through array of questions and
-// Answers and create list with buttons
+// Loop through array to create question lists
 function getQuestion() {
   let currentQuestion = questions[currentQuestionIndex];
   let promptEl = document.getElementById("question-words");
@@ -158,24 +157,22 @@ function saveHighscore() {
     };
     highscores.push(newScore);
     window.localStorage.setItem("highscores", JSON.stringify(highscores));
-    alert("Your Score has been Submitted");
+    alert("your Score has been Submitted");
   }
 }
 
-// NEXT:
 // Save users' score after pressing enter
 function checkForEnter(event) {
   if (event.key === "Enter") {
     saveHighscore();
-    alert("Your Score has been Submitted");
+    alert("Yor Score has been Submitted");
   }
 }
+// FIXME:
 nameEl.onkeyup = checkForEnter;
 
 // Save users' score after clicking submit
-
 submitBtn.onclick = saveHighscore;
 
 // Start quiz after clicking start quiz
-
 startBtn.onclick = quizStart;
