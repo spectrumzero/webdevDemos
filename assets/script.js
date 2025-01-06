@@ -168,11 +168,11 @@ function checkForEnter(event) {
     alert("Yor Score has been Submitted");
   }
 }
-// FIXME:
-nameEl.onkeyup = checkForEnter;
 
+// event listeners
+// save users' score after keyup
+nameEl.onkeyup = checkForEnter;
 // Save users' score after clicking submit
 submitBtn.onclick = saveHighscore;
-
 // Start quiz after clicking start quiz
 startBtn.onclick = quizStart;

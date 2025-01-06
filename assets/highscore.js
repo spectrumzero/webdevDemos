@@ -17,7 +17,9 @@ function printHighscores() {
 
 // Clear previous scores when users click clear
 function clearHighscores() {
+  // delete key from localStorage
   window.localStorage.removeItem("highscores");
+  // refresh page
   window.location.reload();
 }
 document.getElementById("clear").onclick = clearHighscores;
